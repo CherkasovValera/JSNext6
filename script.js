@@ -35,14 +35,7 @@ async function fecthData() {
             `;
       cardsConsol.insertAdjacentHTML("beforeend", productElem);
     });
-    // const closeArr = document.querySelectorAll(".product__add");
-    // console.log(closeArr);
-    // closeArr.forEach((elem) => {
-    //   elem.addEventListener("click", function () {
-    //     const divRemoved = elem.closest(".product");
-    //     divRemoved.remove();
-    //   });
-    // });
+
     
   } catch (error) {
     console.log(error);
