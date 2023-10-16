@@ -62,6 +62,40 @@ summary::-webkit-details-marker {
   left: -9999999px;
 }
 
+.basket {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  top: 37px;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ebebeb;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none;
+}
+
+.basketRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 10px;
+}
+
+.basketHeader {
+  font-weight: bold;
+}
+
+.basketTotal {
+  font-weight: bold;
+  text-align: right;
+}
+
 .header__checkbox:checked ~ .mobile-menu {
   right: 0;
 }
@@ -1486,7 +1520,22 @@ summary::-webkit-details-marker {
     padding-right: calc(50% - 171.5px);
   }
   .header__link-site {
-    display: none;
+    position: fixed;
+  }
+  .cart__num {
+    position: absolute;
+    background-color: #d62240;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    top: -5px;
+    right: -5px;
   }
   .promo__img {
     display: none;

@@ -13,7 +13,7 @@ async function fecthData() {
       const productElem = `
       <div class="product">
                     <img class="product__img" src="${imgUrl}" alt="${name}">
-                    <div class="product__content">
+                    <div class="cart__card-description">
                         <a href="${name}" class="product__heading">ELLERY X M'O CAPSULE</a>
                         <p class="product__text">${contecst}</p>
                         <p class="product__price">$${price}</p>
@@ -33,10 +33,72 @@ async function fecthData() {
                         Add to Cart</a>
                 </div>
             `;
-            cardsConsol.insertAdjacentHTML("beforeend", productElem);
+      cardsConsol.insertAdjacentHTML("beforeend", productElem);
     });
+    // const closeArr = document.querySelectorAll(".product__add");
+    // console.log(closeArr);
+    // closeArr.forEach((elem) => {
+    //   elem.addEventListener("click", function () {
+    //     const divRemoved = elem.closest(".product");
+    //     divRemoved.remove();
+    //   });
+    // });
   } catch (error) {
     console.log(error);
   }
 }
 fecthData();
+
+async function bascetData() {
+  try {
+    const response = await fetch("data.json");
+    if (!response.ok) {
+      throw new Error("Не удалось получить данные!");
+    }
+    const dataBasc = await response.json();
+    console.log(dataBasc);
+    const cardsConsolBasc = document.querySelector(".basket__box");
+    dataBasc.forEach(({ imgUrl, name, color, price, size, quantity }) => {
+      const productElemBasc = `
+      <div class="cart__card">
+                    <img class="product__img" src="${imgUrl}" alt="${name}">
+                    <div class="product__content">
+                        <a href="${name}" class="product__heading">ELLERY X M'O CAPSULE</a>
+                        
+                        <p class="product__price">Price: $${price}</p>
+                        <p class="cart__card-description__fields_grey"> Colors: ${color}</p>
+                        <p class="cart__card-description__fields_grey"> Size: ${size}</p>
+                        <p class="cart__card-description__fields_grey"> Quantity: ${quantity}<input type="number" value="0" /></p>
+                    </div>
+                    <button class="cart__close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#575757">
+                            <path
+                                d="m11.245 9 6.285-6.285a1.59 1.59 0 0 0-2.245-2.25L9 6.752 2.715.466a1.59 1.59 0 0 0-2.25 2.25L6.752 9 .466 15.285a1.59 1.59 0 0 0 2.25 2.25L9 11.248l6.285 6.285a1.591 1.591 0 0 0 2.25-2.25L11.244 9Z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            `;
+      cardsConsolBasc.insertAdjacentHTML("beforeend", productElemBasc);
+    });
+    const closeArrBasc = document.querySelectorAll(".cart__close");
+    console.log(closeArrBasc);
+    closeArrBasc.forEach((elem) => {
+      elem.addEventListener("click", function () {
+        const divRemov = elem.closest(".cart__card");
+        divRemov.remove();
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+bascetData();
+
+// На предыдущем уроке вы сформировали данные из раздела "Товары".
+
+// При клике на кнопку add to cart у товара под блоком с акциями появляется раздел Cart items.
+
+// В разделе Cart items появляются товары, добавленные в корзину,
+
+// При клике на крестик, товар удаляется из из раздела корзины, если удалить все товары, раздел полностью пропадает.
