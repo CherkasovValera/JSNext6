@@ -54,6 +54,12 @@ async function bascetData() {
     const dataBasc = await response.json();
     console.log(dataBasc);
     const cardsConsolBasc = document.querySelector(".basket__box");
+    const cart_items = document.createElement('h1');
+    
+cart_items.textContent = "Cart Items";
+
+document.querySelector('.basket__box').prepend(cart_items);
+
     dataBasc.forEach(({ imgUrl, name, color, price, size, quantity }) => {
       const productElemBasc = `
       <div class="cart__card center">
